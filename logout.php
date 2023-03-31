@@ -11,7 +11,7 @@
   <!-- Site Header -->
   <?php include __DIR__ . "/templates/header.php"; ?>
   <main>
-    <h1>Homepage</h1>
+    <h1>Logout</h1>
   </main>
   <!-- Site Footer -->
   <?php include __DIR__ . "/templates/footer.php"; ?>

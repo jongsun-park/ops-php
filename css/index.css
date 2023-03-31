@@ -1,0 +1,89 @@
+@import "./reset.css";
+@import "./layout.css";
+@import "./typography.css";
+@import "./variables.css";
+
+
+/* link styles reset */
+a {
+  text-decoration: none;
+  color: initial;
+}
+
+/* hover animation */
+a {
+  position: relative;
+}
+
+a::before {
+  content: '';
+  position: absolute;
+  /* inset: -4px -16px; */
+  top: calc(100% + 4px);
+  width: 0;
+  /* height: calc(100% + 8px); */
+  height: 4px;
+  background: var(--color-yellow);
+  z-index: -1;
+  transition: all ease-out 200ms;
+}
+
+a:hover::before {
+  /* width: calc(100% + 32px); */
+  width: 100%;
+}
+
+/* box size reset */
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+/* Button styles */
+.button {
+  font-size: 1rem;
+  border: 2px solid transparent;
+  display: block;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  min-width: 20ch;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.button:hover {
+  cursor: pointer;
+  background: var(--color-black);
+  color: var(--color-white);
+}
+
+.is-full {
+  width: 100%;
+}
+
+.is-primary {
+  background-color: var(--color-navy);
+  color: var(--color-white);
+}
+
+.is-secondary {
+  background-color: var(--color-white);
+  border-color: var(--color-navy);
+  color: var(--color-navy);
+}
+
+.buttons {
+  display: flex;
+  margin: 1rem 0 1rem;
+  gap: 1rem;
+}
+
+/* card */
+.card {
+  border: 1px solid var(--color-light-gray);
+  padding: 2rem 2rem 2.4rem;
+  border-radius: 4px;
+  box-shadow: var(--box-shadow);
+}

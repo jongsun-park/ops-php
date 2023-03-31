@@ -1,0 +1,59 @@
+/* header */
+.flex-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.display-none {
+  display: none;
+}
+
+header {
+  padding: 1rem;
+}
+
+header .site-title {
+  font-size: 1.4rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -4px;
+}
+
+header .site-nav li+li {
+  margin-left: 1rem;
+}
+
+header .site-memeber li+li {
+  margin-left: 1rem;
+}
+
+
+/* footer */
+footer {
+  padding: 1rem;
+}
+
+/* footer .copyright {} */
+
+footer .about-me span+span {
+  margin-left: 8px;
+}
+
+/* container */
+
+/* full size page */
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+  padding: 1rem;
+}
