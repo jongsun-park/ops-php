@@ -8,6 +8,10 @@ class CMS
     protected $session   = null;                         // Stores reference to Session object
     protected $token     = null;                         // Stores reference to Token object
 
+    // OPS
+    protected $production = null;                        // Stores reference to Production
+
+
     public function __construct($dsn, $username, $password)
     {
         $this->db = new Database($dsn, $username, $password); // Create Database object
@@ -35,6 +39,14 @@ class CMS
             $this->token = new Token($this->db);         // Create Token object
         }
         return $this->token;                             // Return Token object
+    }
+
+    public function getProduction()
+    {
+        if ($this->production === null) {                    // If $member property null
+            $this->production = new Production($this->db);       // Create Member object
+        }
+        return $this->production;                            // Return Member object
     }
 
 }

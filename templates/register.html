@@ -4,39 +4,71 @@
 
 {% block content %}
 <main class="container" id="content">
-
   <section class="header">
-    <h1>Register</h1>
+    <h1 class="title mb-5">Register</h1>
   </section>
-  <form method="post" action="register.php" class="form-membership">
-    {% if errors %}<div class="alert alert-danger">Please correct errors</div>{% endif %}
+  
+  {% if errors %}
+  <article class="message is-danger">
+    <div class="message-body">
+      Please correct errors
+    </div>
+  </article>
+  {% endif %}
 
-    <div class="form-group">
-      <label for="forename">Forename: </label><input type="text" name="forename" value="{{ member.forename }}" id="forename" class="form-control">
-      <div class="errors">{{ errors.forename }}</div>
+  <form method="post" action="register.php" class="form-membership box my-2">
+    <div class="field">
+      <label for="user_name" class="label">User Name</label>
+      <div class="control has-icons-left">
+        <span class="icon is-small is-left">
+          <i class="fas fa-user"></i>
+        </span>
+        <input type="text" name="user_name" value="{{ member.user_name }}" id="user_name" class="input">
+      </div>
+      <div class="help is-danger">{{ errors.user_name }}</div>
     </div>
 
-    <div class="form-group">
-      <label for="surname">Surname: </label><input type="text" name="surname" value="{{ member.surname }}" id="surname" class="form-control">
-      <div class="errors">{{ errors.surname }}</div>
+    <div class="field">
+      <label class="label" for="email">Email address</label>
+      <div class="control has-icons-left">
+        <span class="icon is-small is-left">
+          <i class="fa-solid fa-envelope"></i>
+        </span>
+        <input type="email" name="email" value="{{ member.email }}" id="email" class="input">
+      </div>
+      <div class="help is-danger">{{ errors.email }}</div>
     </div>
 
-    <div class="form-group">
-      <label for="email">Email address: </label><input type="email" name="email" value="{{ member.email }}" id="email" class="form-control">
-      <div class="errors">{{ errors.email }}</div>
+    <div class="field">
+      <label class="label" for="password">Password: </label>
+      <div class="control has-icons-left">
+        <span class="icon is-small is-left">
+          <i class="fas fa-lock"></i>
+        </span>
+        <input type="password" name="password" id="password" class="input">
+      </div>
+      <div class="help is-danger">{{ errors.password|raw }}</div>
     </div>
 
-    <div class="form-group">
-      <label for="password">Password: </label><input type="password" name="password" id="password" class="form-control">
-      <div class="errors">{{ errors.password|raw }}</div>
+    <div class="field">
+      <label class="label" for="confirm">Confirm password</label>
+      <div class="control has-icons-left">
+        <span class="icon is-small is-left">
+          <i class="fas fa-lock"></i>
+        </span>
+        <input type="password" name="confirm" id="confirm" class="input">
+      </div>
+      <div class="help is-danger">{{ errors.confirm }}</div>
     </div>
 
-    <div class="form-group">
-      <label for="confirm">Confirm password: </label><input type="password" name="confirm" id="confirm" class="form-control">
-      <div class="errors">{{ errors.confirm }}</div>
+    <div class="field is-grouped">
+      <div class="control">
+        <button type="submit" class="button is-link">Register</button>
+      </div>
+      <div class="control">
+        <a href="login.php"><button class="button is-link is-light">Login</button></a>
+      </div>
     </div>
-
-    <input type="submit" class="btn btn-primary" value="Register">
   </form>
 
 </main>

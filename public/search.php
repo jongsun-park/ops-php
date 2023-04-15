@@ -21,6 +21,8 @@ if ($data['count'] > $data['show']) {                                // If more 
     $data['current_page'] = ceil($data['from'] / $data['show']) + 1; // Current page
 }
 
-$data['navigation']  = $cms->getCategory()->getAll();                // Get categories
+echo "SEARCH PAGE";
 
-echo $twig->render('search.html', $data);                            // Render template
+// $data['navigation']  = $cms->getCategory()->getAll();                // Get categories
+
+// echo $twig->render('search.html', $data);                            // Render template

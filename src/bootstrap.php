@@ -11,7 +11,7 @@ if (DEV === false) {                                     // If not in developmen
     register_shutdown_function('handle_shutdown');       // Set shutdown handler
 }
 
-$cms = new \OPS\CMS\CMS($dsn, $username, $password); // Create CMS object
+$cms = new \OPS\CMS\CMS($dsn, $username, $password);     // Create CMS object
 unset($dsn, $username, $password);                       // Remove database config data
 
 $twig_options['cache'] = APP_ROOT . '/var/cache';        // Path to Twig cache folder

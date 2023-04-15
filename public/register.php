@@ -6,19 +6,30 @@ include '../src/bootstrap.php';                          // Setup file
 $member = [];                                            // Initialize member array
 $errors = [];                                            // Initialize errors array
 
+function test($member, $errors, $twig){
+    echo "<pre>";
+    var_dump($_POST);
+    echo "</pre>";
+
+    $data['member']     = $member;                               // Member data
+    $data['errors']     = $errors;
+
+    echo $twig->render('register.html', $data); 
+    exit();
+}
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {              // If form was posted
     // Get form data
-    $member['forename'] = $_POST['forename'];            // Get forename
-    $member['surname']  = $_POST['surname'];             // Get surname
-    $member['email']    = $_POST['email'];               // Get email
-    $member['password'] = $_POST['password'];            // Get password
-    $confirm            = $_POST['confirm'];             // Get password confirmation
+    // test($member, $errors, $twig);
+
+    $member['user_name'] = $_POST['user_name'];            // Get username
+    $member['email']     = $_POST['email'];               // Get email
+    $member['password']  = $_POST['password'];            // Get password
+    $confirm             = $_POST['confirm'];             // Get password confirmation
 
     // Validate form data
-    $errors['forename'] = Validate::isText($member['forename'], 1, 254)
-        ? '' : 'Forename must be 1-254 characters';
-    $errors['surname']  = Validate::isText($member['surname'], 1, 254)
-        ? '' : 'Surname must be 1-254 characters';
+    $errors['user_name'] = Validate::isText($member['user_name'], 1, 254)
+        ? '' : 'User name must be 1-254 characters';
     $errors['email']    = Validate::isEmail($member['email'])
         ? '' : 'Please enter a valid email';
     $errors['password'] = Validate::isPassword($member['password'])

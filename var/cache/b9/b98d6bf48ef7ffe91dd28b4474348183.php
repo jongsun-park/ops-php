@@ -54,121 +54,140 @@ class __TwigTemplate_4ab8853f1fe2e24092b46f3528cb37e5 extends Template
         // line 8
         echo twig_escape_filter($this->env, ($context["doc_root"] ?? null), "html", null, true);
         echo "css/styles.css\">
-    <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\"> 
-    <link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap\">
     <link rel=\"shortcut icon\" type=\"image/png\" href=\"";
-        // line 11
+        // line 9
         echo twig_escape_filter($this->env, ($context["doc_root"] ?? null), "html", null, true);
         echo "img/favicon.ico\">
-    <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css\">
+    <!-- Font Awesome CDN -->
+    <script src=\"https://kit.fontawesome.com/ca6208c7d0.js\" crossorigin=\"anonymous\" defer></script>
   </head>
   <body>
-    <header>
-      <a class=\"skip-link\" href=\"#content\">Skip to content</a>
-      <nav class=\"member-menu\">
-        <div class=\"container\">
-          ";
-        // line 19
-        if ((twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "id", [], "any", false, false, false, 19) == 0)) {
-            // line 20
-            echo "            <a href=\"login.php\" class=\"nav-item nav-link\">Log in</a> /
-            <a href=\"register.php\" class=\"nav-item nav-link\">Register</a>
-          ";
-        } else {
-            // line 23
-            echo "            <a href=\"member.php?id=";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "id", [], "any", false, false, false, 23), "html", null, true);
-            echo "\">";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "forename", [], "any", false, false, false, 23), "html", null, true);
-            echo "</a> /
-            ";
-            // line 24
-            if ((twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "role", [], "any", false, false, false, 24) == "admin")) {
-                // line 25
-                echo "              <a href=\"admin/index.php\">Admin</a> /
-            ";
-            }
-            // line 27
-            echo "            <a href=\"logout.php\">Logout</a>
-          ";
-        }
-        // line 29
-        echo "        </div>
-      </nav>
-      <div class=\"container\">
-        <div class=\"logo\">
-          <a href=\"";
-        // line 33
+    <!-- HEADER -->
+    <header class=\"mt-2 mb-5\">
+      <!-- NAVIGATION -->
+      <nav class=\"navbar\" role=\"navigation\" aria-label=\"main navigation\">
+        <!-- LOGO -->
+        <div class=\"navbar-brand\">
+          <a class=\"navbar-item\" href=\"";
+        // line 20
         echo twig_escape_filter($this->env, ($context["doc_root"] ?? null), "html", null, true);
-        echo "index.php\"><img src=\"";
+        echo "index.php\">
+            <img src=\"";
+        // line 21
         echo twig_escape_filter($this->env, ($context["doc_root"] ?? null), "html", null, true);
-        echo "img/logo.png\" alt=\"Fergusons' Operations\"></a>
+        echo "img/logo.png\" width=\"112\" height=\"28\">
+          </a>
+
+          <a role=\"button\" class=\"navbar-burger\" aria-label=\"menu\" aria-expanded=\"false\" data-target=\"ops_main_navbar\">
+            <span aria-hidden=\"true\"></span>
+            <span aria-hidden=\"true\"></span>
+            <span aria-hidden=\"true\"></span>
+          </a>
         </div>
-        <nav>
-          <button id=\"toggle-navigation\" aria-expanded=\"false\">
-            <span class=\"icon-menu\"></span><span class=\"hidden\">Menu</span>
-          </button>
-          <ul id=\"menu\">
-            ";
-        // line 40
-        $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable(($context["navigation"] ?? null));
-        foreach ($context['_seq'] as $context["_key"] => $context["link"]) {
-            // line 41
-            echo "            ";
-            if ((twig_get_attribute($this->env, $this->source, $context["link"], "navigation", [], "any", false, false, false, 41) == 1)) {
-                // line 42
-                echo "              <li><a href=\"";
-                echo twig_escape_filter($this->env, ($context["doc_root"] ?? null), "html", null, true);
-                echo "category.php?id=";
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["link"], "id", [], "any", false, false, false, 42), "html", null, true);
-                echo "\"
-              ";
-                // line 43
-                if ((($context["section"] ?? null) == twig_get_attribute($this->env, $this->source, $context["link"], "id", [], "any", false, false, false, 43))) {
-                    echo " class=\"on\"";
-                }
-                echo ">
-                ";
-                // line 44
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["link"], "name", [], "any", false, false, false, 44), "html", null, true);
-                echo "</a></li>
-            ";
-            }
-            // line 46
-            echo "            ";
-        }
-        $_parent = $context['_parent'];
-        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['link'], $context['_parent'], $context['loop']);
-        $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 47
-        echo "            <li><a href=\"";
+
+        <!-- MENUS -->
+        <div id=\"ops_main_navbar\" class=\"navbar-menu\">
+          <div class=\"navbar-start\">
+            <a class=\"navbar-item\" href=\"";
+        // line 34
         echo twig_escape_filter($this->env, ($context["doc_root"] ?? null), "html", null, true);
-        echo "search.php\">
+        echo "index.php\">Home</a>
+            <a class=\"navbar-item\" href=\"";
+        // line 35
+        echo twig_escape_filter($this->env, ($context["doc_root"] ?? null), "html", null, true);
+        echo "production.php\">Production</a>
+            <a class=\"navbar-item\" href=\"";
+        // line 36
+        echo twig_escape_filter($this->env, ($context["doc_root"] ?? null), "html", null, true);
+        echo "product.php\">Product</a>
+            <!-- OPTIONS -->
+            <div class=\"navbar-item has-dropdown is-hoverable\">
+              <a class=\"navbar-link\">
+                Options
+              </a>
+
+              <div class=\"navbar-dropdown\">
+                <a class=\"navbar-item\">
+                  Option 1
+                </a>
+                <a class=\"navbar-item\">
+                  Option 2
+                </a>
+                <a class=\"navbar-item\">
+                  Option 3
+                </a>
+                <hr class=\"navbar-divider\">
+                <a class=\"navbar-item\">
+                  Option 4
+                </a>
+              </div>
+            </div>
+            <!-- SEARCH -->
+            <a class=\"navbar-item\" href=\"";
+        // line 60
+        echo twig_escape_filter($this->env, ($context["doc_root"] ?? null), "html", null, true);
+        echo "search.php\" class=\"navbar-link\">
               <span class=\"icon-search\"></span><span class=\"search-text\">Search</span>
-            </a></li>
-          </ul>
-        </nav>
-      </div><!-- /.container -->
+            </a>
+          </div>
+          <!-- MEMBERS -->
+          <div class=\"navbar-end\">
+            <div class=\"navbar-item\">
+              <div class=\"buttons\">
+                ";
+        // line 68
+        if ((twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "id", [], "any", false, false, false, 68) == 0)) {
+            // line 69
+            echo "                  <a class=\"button is-primary\" href=\"login.php\" class=\"nav-item nav-link\">Log in</a> 
+                  <a class=\"button is-light\" href=\"register.php\" class=\"nav-item nav-link\">Register</a>
+                ";
+        } else {
+            // line 72
+            echo "                  <a class=\"button is-primary\" href=\"member.php?id=";
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "id", [], "any", false, false, false, 72), "html", null, true);
+            echo "\">";
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "user_name", [], "any", false, false, false, 72), "html", null, true);
+            echo "</a> 
+                  ";
+            // line 73
+            if ((twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "role", [], "any", false, false, false, 73) == "admin")) {
+                // line 74
+                echo "                    <a class=\"button is-primary\" href=\"admin/index.php\">Admin</a> 
+                  ";
+            }
+            // line 76
+            echo "                  <a class=\"button is-light\" href=\"logout.php\">Logout</a>
+                ";
+        }
+        // line 78
+        echo "
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
     </header>
     ";
-        // line 54
+        // line 85
         $this->displayBlock('content', $context, $blocks);
-        // line 55
-        echo "    <footer>
-      <div class=\"container\">
-        <a href=\"";
-        // line 57
+        // line 86
+        echo "    <!-- FOOTER -->
+    <footer class=\"footer\">
+      <div class=\"content has-text-centered\">
+        <p>
+          <a href=\"";
+        // line 90
         echo twig_escape_filter($this->env, ($context["doc_root"] ?? null), "html", null, true);
         echo "contact.php\">Contact us</a>
-        <span class=\"copyright\">&copy; OPS ";
-        // line 58
+          <span class=\"copyright\">&copy; <strong>OPS</strong> ";
+        // line 91
         echo twig_escape_filter($this->env, twig_date_format_filter($this->env, "now", "Y"), "html", null, true);
         echo "</span>
+        </p>
       </div>
     </footer>
     <script src=\"";
-        // line 61
+        // line 95
         echo twig_escape_filter($this->env, ($context["doc_root"] ?? null), "html", null, true);
         echo "js/site.js\"></script>
   </body>
@@ -189,7 +208,7 @@ class __TwigTemplate_4ab8853f1fe2e24092b46f3528cb37e5 extends Template
         echo "Fergusons - Operations";
     }
 
-    // line 54
+    // line 85
     public function block_content($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -207,7 +226,7 @@ class __TwigTemplate_4ab8853f1fe2e24092b46f3528cb37e5 extends Template
 
     public function getDebugInfo()
     {
-        return array (  193 => 54,  186 => 7,  179 => 6,  172 => 61,  166 => 58,  162 => 57,  158 => 55,  156 => 54,  145 => 47,  139 => 46,  134 => 44,  128 => 43,  121 => 42,  118 => 41,  114 => 40,  102 => 33,  96 => 29,  92 => 27,  88 => 25,  86 => 24,  79 => 23,  74 => 20,  72 => 19,  61 => 11,  55 => 8,  51 => 7,  47 => 6,  40 => 1,);
+        return array (  212 => 85,  205 => 7,  198 => 6,  191 => 95,  184 => 91,  180 => 90,  174 => 86,  172 => 85,  163 => 78,  159 => 76,  155 => 74,  153 => 73,  146 => 72,  141 => 69,  139 => 68,  128 => 60,  101 => 36,  97 => 35,  93 => 34,  77 => 21,  73 => 20,  59 => 9,  55 => 8,  51 => 7,  47 => 6,  40 => 1,);
     }
 
     public function getSourceContext()
@@ -220,56 +239,90 @@ class __TwigTemplate_4ab8853f1fe2e24092b46f3528cb37e5 extends Template
     <title>{% block title %}Fergusons' Operations{% endblock %}</title>
     <meta name=\"description\" content=\"{% block description %}Fergusons - Operations{% endblock %}\">
     <link rel=\"stylesheet\" type=\"text/css\" href=\"{{ doc_root }}css/styles.css\">
-    <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\"> 
-    <link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap\">
     <link rel=\"shortcut icon\" type=\"image/png\" href=\"{{ doc_root }}img/favicon.ico\">
-    <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css\">
+    <!-- Font Awesome CDN -->
+    <script src=\"https://kit.fontawesome.com/ca6208c7d0.js\" crossorigin=\"anonymous\" defer></script>
   </head>
   <body>
-    <header>
-      <a class=\"skip-link\" href=\"#content\">Skip to content</a>
-      <nav class=\"member-menu\">
-        <div class=\"container\">
-          {% if session.id == 0 %}
-            <a href=\"login.php\" class=\"nav-item nav-link\">Log in</a> /
-            <a href=\"register.php\" class=\"nav-item nav-link\">Register</a>
-          {% else %}
-            <a href=\"member.php?id={{ session.id }}\">{{ session.forename }}</a> /
-            {% if session.role == 'admin' %}
-              <a href=\"admin/index.php\">Admin</a> /
-            {% endif %}
-            <a href=\"logout.php\">Logout</a>
-          {% endif %}
+    <!-- HEADER -->
+    <header class=\"mt-2 mb-5\">
+      <!-- NAVIGATION -->
+      <nav class=\"navbar\" role=\"navigation\" aria-label=\"main navigation\">
+        <!-- LOGO -->
+        <div class=\"navbar-brand\">
+          <a class=\"navbar-item\" href=\"{{ doc_root }}index.php\">
+            <img src=\"{{ doc_root }}img/logo.png\" width=\"112\" height=\"28\">
+          </a>
+
+          <a role=\"button\" class=\"navbar-burger\" aria-label=\"menu\" aria-expanded=\"false\" data-target=\"ops_main_navbar\">
+            <span aria-hidden=\"true\"></span>
+            <span aria-hidden=\"true\"></span>
+            <span aria-hidden=\"true\"></span>
+          </a>
+        </div>
+
+        <!-- MENUS -->
+        <div id=\"ops_main_navbar\" class=\"navbar-menu\">
+          <div class=\"navbar-start\">
+            <a class=\"navbar-item\" href=\"{{ doc_root }}index.php\">Home</a>
+            <a class=\"navbar-item\" href=\"{{ doc_root }}production.php\">Production</a>
+            <a class=\"navbar-item\" href=\"{{ doc_root }}product.php\">Product</a>
+            <!-- OPTIONS -->
+            <div class=\"navbar-item has-dropdown is-hoverable\">
+              <a class=\"navbar-link\">
+                Options
+              </a>
+
+              <div class=\"navbar-dropdown\">
+                <a class=\"navbar-item\">
+                  Option 1
+                </a>
+                <a class=\"navbar-item\">
+                  Option 2
+                </a>
+                <a class=\"navbar-item\">
+                  Option 3
+                </a>
+                <hr class=\"navbar-divider\">
+                <a class=\"navbar-item\">
+                  Option 4
+                </a>
+              </div>
+            </div>
+            <!-- SEARCH -->
+            <a class=\"navbar-item\" href=\"{{ doc_root }}search.php\" class=\"navbar-link\">
+              <span class=\"icon-search\"></span><span class=\"search-text\">Search</span>
+            </a>
+          </div>
+          <!-- MEMBERS -->
+          <div class=\"navbar-end\">
+            <div class=\"navbar-item\">
+              <div class=\"buttons\">
+                {% if session.id == 0 %}
+                  <a class=\"button is-primary\" href=\"login.php\" class=\"nav-item nav-link\">Log in</a> 
+                  <a class=\"button is-light\" href=\"register.php\" class=\"nav-item nav-link\">Register</a>
+                {% else %}
+                  <a class=\"button is-primary\" href=\"member.php?id={{ session.id }}\">{{ session.user_name }}</a> 
+                  {% if session.role == 'admin' %}
+                    <a class=\"button is-primary\" href=\"admin/index.php\">Admin</a> 
+                  {% endif %}
+                  <a class=\"button is-light\" href=\"logout.php\">Logout</a>
+                {% endif %}
+
+              </div>
+            </div>
+          </div>
         </div>
       </nav>
-      <div class=\"container\">
-        <div class=\"logo\">
-          <a href=\"{{ doc_root }}index.php\"><img src=\"{{ doc_root }}img/logo.png\" alt=\"Fergusons' Operations\"></a>
-        </div>
-        <nav>
-          <button id=\"toggle-navigation\" aria-expanded=\"false\">
-            <span class=\"icon-menu\"></span><span class=\"hidden\">Menu</span>
-          </button>
-          <ul id=\"menu\">
-            {% for link in navigation %}
-            {% if (link.navigation == 1) %}
-              <li><a href=\"{{ doc_root }}category.php?id={{ link.id }}\"
-              {% if (section == link.id) %} class=\"on\"{% endif %}>
-                {{ link.name }}</a></li>
-            {% endif %}
-            {% endfor %}
-            <li><a href=\"{{ doc_root }}search.php\">
-              <span class=\"icon-search\"></span><span class=\"search-text\">Search</span>
-            </a></li>
-          </ul>
-        </nav>
-      </div><!-- /.container -->
     </header>
     {% block content %}{% endblock %}
-    <footer>
-      <div class=\"container\">
-        <a href=\"{{ doc_root }}contact.php\">Contact us</a>
-        <span class=\"copyright\">&copy; OPS {{ 'now'|date('Y') }}</span>
+    <!-- FOOTER -->
+    <footer class=\"footer\">
+      <div class=\"content has-text-centered\">
+        <p>
+          <a href=\"{{ doc_root }}contact.php\">Contact us</a>
+          <span class=\"copyright\">&copy; <strong>OPS</strong> {{ 'now'|date('Y') }}</span>
+        </p>
       </div>
     </footer>
     <script src=\"{{ doc_root }}js/site.js\"></script>

@@ -64,68 +64,94 @@ class __TwigTemplate_f7f639ae11306095525f8473757534a0 extends Template
         $macros = $this->macros;
         // line 6
         echo "<main class=\"container\" id=\"content\">
-
   <section class=\"header\">
-    <h1>Register</h1>
+    <h1 class=\"title mb-5\">Register</h1>
   </section>
-  <form method=\"post\" action=\"register.php\" class=\"form-membership\">
-    ";
-        // line 12
+  
+  ";
+        // line 11
         if (($context["errors"] ?? null)) {
-            echo "<div class=\"alert alert-danger\">Please correct errors</div>";
+            // line 12
+            echo "  <article class=\"message is-danger\">
+    <div class=\"message-body\">
+      Please correct errors
+    </div>
+  </article>
+  ";
         }
-        // line 13
+        // line 18
         echo "
-    <div class=\"form-group\">
-      <label for=\"forename\">Forename: </label><input type=\"text\" name=\"forename\" value=\"";
-        // line 15
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["member"] ?? null), "forename", [], "any", false, false, false, 15), "html", null, true);
-        echo "\" id=\"forename\" class=\"form-control\">
-      <div class=\"errors\">";
-        // line 16
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["errors"] ?? null), "forename", [], "any", false, false, false, 16), "html", null, true);
-        echo "</div>
-    </div>
-
-    <div class=\"form-group\">
-      <label for=\"surname\">Surname: </label><input type=\"text\" name=\"surname\" value=\"";
-        // line 20
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["member"] ?? null), "surname", [], "any", false, false, false, 20), "html", null, true);
-        echo "\" id=\"surname\" class=\"form-control\">
-      <div class=\"errors\">";
-        // line 21
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["errors"] ?? null), "surname", [], "any", false, false, false, 21), "html", null, true);
-        echo "</div>
-    </div>
-
-    <div class=\"form-group\">
-      <label for=\"email\">Email address: </label><input type=\"email\" name=\"email\" value=\"";
-        // line 25
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["member"] ?? null), "email", [], "any", false, false, false, 25), "html", null, true);
-        echo "\" id=\"email\" class=\"form-control\">
-      <div class=\"errors\">";
+  <form method=\"post\" action=\"register.php\" class=\"form-membership box my-2\">
+    <div class=\"field\">
+      <label for=\"user_name\" class=\"label\">User Name</label>
+      <div class=\"control has-icons-left\">
+        <span class=\"icon is-small is-left\">
+          <i class=\"fas fa-user\"></i>
+        </span>
+        <input type=\"text\" name=\"user_name\" value=\"";
         // line 26
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["errors"] ?? null), "email", [], "any", false, false, false, 26), "html", null, true);
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["member"] ?? null), "user_name", [], "any", false, false, false, 26), "html", null, true);
+        echo "\" id=\"user_name\" class=\"input\">
+      </div>
+      <div class=\"help is-danger\">";
+        // line 28
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["errors"] ?? null), "user_name", [], "any", false, false, false, 28), "html", null, true);
         echo "</div>
     </div>
 
-    <div class=\"form-group\">
-      <label for=\"password\">Password: </label><input type=\"password\" name=\"password\" id=\"password\" class=\"form-control\">
-      <div class=\"errors\">";
-        // line 31
-        echo twig_get_attribute($this->env, $this->source, ($context["errors"] ?? null), "password", [], "any", false, false, false, 31);
+    <div class=\"field\">
+      <label class=\"label\" for=\"email\">Email address</label>
+      <div class=\"control has-icons-left\">
+        <span class=\"icon is-small is-left\">
+          <i class=\"fa-solid fa-envelope\"></i>
+        </span>
+        <input type=\"email\" name=\"email\" value=\"";
+        // line 37
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["member"] ?? null), "email", [], "any", false, false, false, 37), "html", null, true);
+        echo "\" id=\"email\" class=\"input\">
+      </div>
+      <div class=\"help is-danger\">";
+        // line 39
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["errors"] ?? null), "email", [], "any", false, false, false, 39), "html", null, true);
         echo "</div>
     </div>
 
-    <div class=\"form-group\">
-      <label for=\"confirm\">Confirm password: </label><input type=\"password\" name=\"confirm\" id=\"confirm\" class=\"form-control\">
-      <div class=\"errors\">";
-        // line 36
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["errors"] ?? null), "confirm", [], "any", false, false, false, 36), "html", null, true);
+    <div class=\"field\">
+      <label class=\"label\" for=\"password\">Password: </label>
+      <div class=\"control has-icons-left\">
+        <span class=\"icon is-small is-left\">
+          <i class=\"fas fa-lock\"></i>
+        </span>
+        <input type=\"password\" name=\"password\" id=\"password\" class=\"input\">
+      </div>
+      <div class=\"help is-danger\">";
+        // line 50
+        echo twig_get_attribute($this->env, $this->source, ($context["errors"] ?? null), "password", [], "any", false, false, false, 50);
         echo "</div>
     </div>
 
-    <input type=\"submit\" class=\"btn btn-primary\" value=\"Register\">
+    <div class=\"field\">
+      <label class=\"label\" for=\"confirm\">Confirm password</label>
+      <div class=\"control has-icons-left\">
+        <span class=\"icon is-small is-left\">
+          <i class=\"fas fa-lock\"></i>
+        </span>
+        <input type=\"password\" name=\"confirm\" id=\"confirm\" class=\"input\">
+      </div>
+      <div class=\"help is-danger\">";
+        // line 61
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["errors"] ?? null), "confirm", [], "any", false, false, false, 61), "html", null, true);
+        echo "</div>
+    </div>
+
+    <div class=\"field is-grouped\">
+      <div class=\"control\">
+        <button type=\"submit\" class=\"button is-link\">Register</button>
+      </div>
+      <div class=\"control\">
+        <a href=\"login.php\"><button class=\"button is-link is-light\">Login</button></a>
+      </div>
+    </div>
   </form>
 
 </main>
@@ -144,7 +170,7 @@ class __TwigTemplate_f7f639ae11306095525f8473757534a0 extends Template
 
     public function getDebugInfo()
     {
-        return array (  124 => 36,  116 => 31,  108 => 26,  104 => 25,  97 => 21,  93 => 20,  86 => 16,  82 => 15,  78 => 13,  74 => 12,  66 => 6,  62 => 5,  55 => 3,  48 => 2,  37 => 1,);
+        return array (  143 => 61,  129 => 50,  115 => 39,  110 => 37,  98 => 28,  93 => 26,  83 => 18,  75 => 12,  73 => 11,  66 => 6,  62 => 5,  55 => 3,  48 => 2,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -155,39 +181,71 @@ class __TwigTemplate_f7f639ae11306095525f8473757534a0 extends Template
 
 {% block content %}
 <main class=\"container\" id=\"content\">
-
   <section class=\"header\">
-    <h1>Register</h1>
+    <h1 class=\"title mb-5\">Register</h1>
   </section>
-  <form method=\"post\" action=\"register.php\" class=\"form-membership\">
-    {% if errors %}<div class=\"alert alert-danger\">Please correct errors</div>{% endif %}
+  
+  {% if errors %}
+  <article class=\"message is-danger\">
+    <div class=\"message-body\">
+      Please correct errors
+    </div>
+  </article>
+  {% endif %}
 
-    <div class=\"form-group\">
-      <label for=\"forename\">Forename: </label><input type=\"text\" name=\"forename\" value=\"{{ member.forename }}\" id=\"forename\" class=\"form-control\">
-      <div class=\"errors\">{{ errors.forename }}</div>
+  <form method=\"post\" action=\"register.php\" class=\"form-membership box my-2\">
+    <div class=\"field\">
+      <label for=\"user_name\" class=\"label\">User Name</label>
+      <div class=\"control has-icons-left\">
+        <span class=\"icon is-small is-left\">
+          <i class=\"fas fa-user\"></i>
+        </span>
+        <input type=\"text\" name=\"user_name\" value=\"{{ member.user_name }}\" id=\"user_name\" class=\"input\">
+      </div>
+      <div class=\"help is-danger\">{{ errors.user_name }}</div>
     </div>
 
-    <div class=\"form-group\">
-      <label for=\"surname\">Surname: </label><input type=\"text\" name=\"surname\" value=\"{{ member.surname }}\" id=\"surname\" class=\"form-control\">
-      <div class=\"errors\">{{ errors.surname }}</div>
+    <div class=\"field\">
+      <label class=\"label\" for=\"email\">Email address</label>
+      <div class=\"control has-icons-left\">
+        <span class=\"icon is-small is-left\">
+          <i class=\"fa-solid fa-envelope\"></i>
+        </span>
+        <input type=\"email\" name=\"email\" value=\"{{ member.email }}\" id=\"email\" class=\"input\">
+      </div>
+      <div class=\"help is-danger\">{{ errors.email }}</div>
     </div>
 
-    <div class=\"form-group\">
-      <label for=\"email\">Email address: </label><input type=\"email\" name=\"email\" value=\"{{ member.email }}\" id=\"email\" class=\"form-control\">
-      <div class=\"errors\">{{ errors.email }}</div>
+    <div class=\"field\">
+      <label class=\"label\" for=\"password\">Password: </label>
+      <div class=\"control has-icons-left\">
+        <span class=\"icon is-small is-left\">
+          <i class=\"fas fa-lock\"></i>
+        </span>
+        <input type=\"password\" name=\"password\" id=\"password\" class=\"input\">
+      </div>
+      <div class=\"help is-danger\">{{ errors.password|raw }}</div>
     </div>
 
-    <div class=\"form-group\">
-      <label for=\"password\">Password: </label><input type=\"password\" name=\"password\" id=\"password\" class=\"form-control\">
-      <div class=\"errors\">{{ errors.password|raw }}</div>
+    <div class=\"field\">
+      <label class=\"label\" for=\"confirm\">Confirm password</label>
+      <div class=\"control has-icons-left\">
+        <span class=\"icon is-small is-left\">
+          <i class=\"fas fa-lock\"></i>
+        </span>
+        <input type=\"password\" name=\"confirm\" id=\"confirm\" class=\"input\">
+      </div>
+      <div class=\"help is-danger\">{{ errors.confirm }}</div>
     </div>
 
-    <div class=\"form-group\">
-      <label for=\"confirm\">Confirm password: </label><input type=\"password\" name=\"confirm\" id=\"confirm\" class=\"form-control\">
-      <div class=\"errors\">{{ errors.confirm }}</div>
+    <div class=\"field is-grouped\">
+      <div class=\"control\">
+        <button type=\"submit\" class=\"button is-link\">Register</button>
+      </div>
+      <div class=\"control\">
+        <a href=\"login.php\"><button class=\"button is-link is-light\">Login</button></a>
+      </div>
     </div>
-
-    <input type=\"submit\" class=\"btn btn-primary\" value=\"Register\">
   </form>
 
 </main>

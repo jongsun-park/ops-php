@@ -13,7 +13,7 @@ class Member
     // Get individual member by id
     public function get(int $id)
     {
-        $sql = "SELECT id, forename, surname, email, joined, picture, role 
+        $sql = "SELECT id, user_name, email, joined, role 
                   FROM member
                  WHERE id = :id;";                       // SQL to get member
         return $this->db->runSQL($sql, [$id])->fetch();  // Return member
@@ -22,7 +22,7 @@ class Member
     // Get details of all members
     public function getAll(): array
     {
-        $sql = "SELECT id, forename, surname, joined, picture, role 
+        $sql = "SELECT id, user_name, email, joined, role 
                   FROM member;";                         // SQL to get all members
         return $this->db->runSQL($sql)->fetchAll();      // Return all members
     }
@@ -39,7 +39,7 @@ class Member
     // Login: returns member data if authenticated, false if not
     public function login(string $email, string $password)
     {
-        $sql = "SELECT id, forename, surname, joined, email, password, picture, role 
+        $sql = "SELECT id, user_name, joined, email, password, role 
                   FROM member 
                  WHERE email = :email;";                         // SQL to get member data
         $member = $this->db->runSQL($sql, [$email])->fetch();    // Run SQL
@@ -59,11 +59,11 @@ class Member
 
     // Create a new member
     public function create(array $member): bool
-    {
+    {      
         $member['password'] = password_hash($member['password'], PASSWORD_DEFAULT);  // Hash password
         try {                                                          // Try to add member
-            $sql = "INSERT INTO member (forename, surname, email, password) 
-                    VALUES (:forename, :surname, :email, :password);"; // SQL to add member
+            $sql = "INSERT INTO member (user_name, email, password) 
+                    VALUES (:user_name, :email, :password);"; // SQL to add member
             $this->db->runSQL($sql, $member);                          // Run SQL
             return true;                                               // Return true
         } catch (\PDOException $e) {                                   // If PDOException thrown
@@ -77,10 +77,10 @@ class Member
     // Update an existing member
     public function update(array $member): bool
     {
-        unset($member['joined'],  $member['picture']);                // Remove joined and member from array
+        unset($member['joined']);                // Remove joined and member from array
         try {                                                         // Try to update member
             $sql = "UPDATE member 
-                       SET forename = :forename, surname = :surname, email = :email, role = :role 
+                       SET user_name = :user_name, email = :email, role = :role 
                      WHERE id = :id;";                                // SQL to update member
             $this->db->runSQL($sql, $member);                         // Run SQL
             return true;                                              // Return true
@@ -90,39 +90,6 @@ class Member
             }                                                         // Any other error
             throw $e;                                                 // Re-throw exception
         }
-    }
-
-    // Upload member profile image
-    public function pictureCreate(int $id, string $filename, string $temporary, string $destination): bool
-    {
-        if ($temporary) {                                    // If an image was uploaded
-            $image = new \Imagick($temporary);               // Object to represent image
-            $image->cropThumbnailImage(350, 350);            // Create cropped image
-            $saved = $image->writeImage($destination);       // Save file
-            if ($saved == false) {                           // If save failed
-                throw new Exception('Unable to save image'); // Throw an exception
-            }
-        }
-        $filename = basename($destination);
-        $sql = "UPDATE member 
-                   SET picture = :picture
-                 WHERE id = :id;";                                   // SQL to create picture
-        $this->db->runSQL($sql, ['id'=>$id, 'picture'=>$filename],); // Run SQL pass in user id and filename
-        return true;                                                 // Done return true
-    }
-
-    // Delete member profile image
-    public function pictureDelete(int $id, string $path): bool
-    {
-        $unlink = unlink($path);                         // Delete image file
-        if ($unlink === false) {                         // If failed throw exception
-            throw new Exception('Unable to delete image or image is missing');
-        }
-        $sql = "UPDATE member 
-                   SET picture = null
-                 WHERE id = :id;";                       // SQL to set picture to null
-        $this->db->runSQL($sql, ['id'=>$id,]);           // Run SQL
-        return true;                                     // Return true
     }
 
     // Update member password

@@ -48,7 +48,7 @@ class __TwigTemplate_52f63c45d08b0b97227dc29ecc5661e4 extends Template
         $macros = $this->macros;
         // line 3
         echo "<main class=\"container grid\" id=\"content\">
-  Homepage
+  <h1>This is homepage</h1>
 </main>
 ";
     }
@@ -73,7 +73,7 @@ class __TwigTemplate_52f63c45d08b0b97227dc29ecc5661e4 extends Template
         return new Source("{% extends 'layout.html' %}
 {% block content %}
 <main class=\"container grid\" id=\"content\">
-  Homepage
+  <h1>This is homepage</h1>
 </main>
 {% endblock %}", "index.html", "C:\\Users\\jongs\\Desktop\\operations\\templates\\index.html");
     }
