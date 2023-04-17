@@ -1,0 +1,65 @@
+{% extends 'layout.html' %}
+{% block content %}
+<main class="container grid" id="content">
+  <!-- Options -->
+  <div class="options mb-5">
+    {% for tb in option_tables %}
+      {% if tb[0] is same as (table) %}
+        <a class="button mr-2 mb-2 is-primary" href="option.php?q={{ tb[0] }}">{{ tb[1] }}</a>
+      {% else %}
+        <a class="button mr-2 mb-2" href="option.php?q={{ tb[0] }}">{{ tb[1] }}</a>
+      {% endif %}
+    {% endfor %}
+  </div>
+  
+  <!-- Info message -->
+  {% if info %}
+    <article class="message is-success">
+      <div class="message-body">
+        {{ info }}
+      </div>
+    </article>
+  {% endif %}
+
+  <!-- Error messages -->
+  {% if errors %}
+    <article class="message is-warning">
+      <div class="message-body">
+        {% for error in errors %}
+          <p>{{ error }}</p>
+        {% endfor %}
+      </div>
+    </article>
+  {% endif %}
+
+  <!-- Selected table options -->
+  <h1 class="title">{{ title|capitalize }}</h1>
+  <div class="options">
+    {% for option in options %}
+      <div class="option row is-flex mb-3">
+        <!-- UPDATE OPTION -->
+        <form class="is-flex is-flex-grow-1" action="option.php?q={{ table|e }}&t=update" method="POST">
+          <input type="hidden" name="id" value="{{ option.id|e }}">
+          <input class="input mr-2" type="text" name="name" value="{{ option.name|e }}">
+          <button class="button is-primary mr-2" type="submit">UPDATE</button>
+        </form>
+        <!-- DELETE OPTION -->
+        <form action="option.php?q={{ table|e }}&t=delete" method="POST">
+          <input type="hidden" name="id" value="{{ option.id|e }}">
+          <button class="button is-danger is-light" type="submit">DELETE</button>
+        </form>
+      </div>
+    {% endfor %}
+    {% if table %}
+      <div class="mt-5">
+        <h2 class="subtitle has-text-weight-bold">Create New Option</h2>
+        <!-- CREATE NEW OPTION -->
+        <form class="is-flex" action="option.php?q={{ table|e }}&t=create" method="POST">
+          <input class="input mr-2" type="text" name="name" required>
+          <button class="button is-primary" type="submit">ADD</button>
+        </form>
+      </div>
+    {% endif %}
+  </div>
+</main>
+{% endblock %}

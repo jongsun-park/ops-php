@@ -10,7 +10,7 @@
     <!-- Font Awesome CDN -->
     <script src="https://kit.fontawesome.com/ca6208c7d0.js" crossorigin="anonymous" defer></script>
   </head>
-  <body>
+  <body class="js">
     <!-- HEADER -->
     <header class="mt-2 mb-5">
       <!-- NAVIGATION -->
@@ -21,7 +21,8 @@
             <img src="{{ doc_root }}img/logo.png" width="112" height="28">
           </a>
 
-          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="ops_main_navbar">
+          <!-- Mobile toggle naviagtion -->
+          <a role="button" class="navbar-burger" id="toggle-navigation" aria-label="menu" aria-expanded="false" data-target="ops_main_navbar">
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
@@ -36,29 +37,25 @@
             <a class="navbar-item" href="{{ doc_root }}product.php">Product</a>
             <!-- OPTIONS -->
             <div class="navbar-item has-dropdown is-hoverable">
-              <a class="navbar-link">
+              <a class="navbar-link" href="{{ doc_root }}option.php">
                 Options
               </a>
 
               <div class="navbar-dropdown">
-                <a class="navbar-item">
-                  Option 1
-                </a>
-                <a class="navbar-item">
-                  Option 2
-                </a>
-                <a class="navbar-item">
-                  Option 3
-                </a>
+                {% for tb in option_tables %}
+                  <a class="navbar-item" href="{{ doc_root }}option.php?q={{ tb[0] }}">
+                    {{ tb[1] }}
+                  </a>
+                {% endfor %}
                 <hr class="navbar-divider">
-                <a class="navbar-item">
-                  Option 4
+                <a class="navbar-item" href="{{ doc_root }}option.php?q=wash_option">
+                  Wash Option
                 </a>
               </div>
             </div>
             <!-- SEARCH -->
             <a class="navbar-item" href="{{ doc_root }}search.php" class="navbar-link">
-              <span class="icon-search"></span><span class="search-text">Search</span>
+              <span class="icon-search"><i class="fa-solid fa-magnifying-glass mr-2"></i></span><span class="search-text">Search</span>
             </a>
           </div>
           <!-- MEMBERS -->

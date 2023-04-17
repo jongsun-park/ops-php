@@ -10,6 +10,7 @@ class CMS
 
     // OPS
     protected $production = null;                        // Stores reference to Production
+    protected $option     = null;                        // Stores reference to Option
 
 
     public function __construct($dsn, $username, $password)
@@ -43,10 +44,17 @@ class CMS
 
     public function getProduction()
     {
-        if ($this->production === null) {                    // If $member property null
-            $this->production = new Production($this->db);       // Create Member object
+        if ($this->production === null) {                        // If $production property null
+            $this->production = new Production($this->db);       // Create Production object
         }
-        return $this->production;                            // Return Member object
+        return $this->production;                                // Return Production object
+    }
+
+    public function getOption(){
+        if ($this->option === null) {                    // If $option property null
+            $this->option = new Option($this->db);       // Create Option object
+        }
+        return $this->option;                            // Return Option object
     }
 
 }

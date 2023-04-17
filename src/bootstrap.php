@@ -24,6 +24,22 @@ $twig->addGlobal('doc_root', DOC_ROOT);                  // Document root
 $session = $cms->getSession();                           // Create session
 $twig->addGlobal('session', $session);                   // Add session to Twig global
 
+// OPTIONS TABLE
+$option_tables = [
+    ['color', 'Color'], // [NAME_FOR_DB, NAME_FOR_HTML]
+    ['corner_option', 'Corner Option'],
+    ['grade', 'Grade'],
+    ['hem_size', 'Hem Size'],
+    ['hem_type', 'Hem Type'],
+    ['label', 'Label'],
+    ['material', 'Material'],
+    ['packing', 'Packing'],
+    ['unit', 'Unit'],
+    ['urgency', 'Urgency'],
+];
+$twig->addGlobal('option_tables', $option_tables);   
+
+
 if (DEV === true) {                                      // If in development
     $twig->addExtension(new \Twig\Extension\DebugExtension()); // Add Twig debug extension
 }

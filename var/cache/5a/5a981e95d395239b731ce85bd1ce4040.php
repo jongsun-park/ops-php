@@ -64,7 +64,7 @@ class __TwigTemplate_a37c3fd2532bdb1c2476a6a1698350d1 extends Template
         $macros = $this->macros;
         // line 5
         echo "
-<main class=\"container my-3 p-5\" id=\"content\">
+<main class=\"container\" id=\"content\">
   <section class=\"header\">
     <h1 class=\"title mb-5\">Log in</h1>
   </section>
@@ -165,7 +165,7 @@ class __TwigTemplate_a37c3fd2532bdb1c2476a6a1698350d1 extends Template
 {% block description %}Log in to your Fergusons' Operations account{% endblock %}
 {% block content %}
 
-<main class=\"container my-3 p-5\" id=\"content\">
+<main class=\"container\" id=\"content\">
   <section class=\"header\">
     <h1 class=\"title mb-5\">Log in</h1>
   </section>

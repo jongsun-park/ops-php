@@ -68,3 +68,15 @@ function handle_shutdown()
         handle_exception($e);             // Call exception handler
     }
 }
+
+// VAR_DUMP WITH STYLES
+function logger($var_dump){
+    echo "<pre>";
+    $var_dump;
+    echo "</pre>";
+}
+
+// option_table -> option table
+function getBetterName($name){
+    return str_replace('_', ' ', $name);
+}

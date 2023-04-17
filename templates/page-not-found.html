@@ -5,8 +5,19 @@
 
 {% block content %}
 <main class="container" id="content">
-  <h1>Sorry! We cannot find that page.</h1>
-  <p>Try the <a href="home.php">home page</a> or email us 
-  <a href="mailto:hello@eg.link">hello@eg.link</a></p>
+  <section class="hero is-medium has-text-centered">
+    <div class="hero-body">
+      <h1 class="title is-1 pb-2">
+        Sorry! We cannot find that page.
+      </h1>
+      <p class="subtitle">
+        Try the <a href="index.php">home page</a> or email us <a href="mailto:{{ contact_email }}">{{ contact_email }}</a>
+      </p>
+      <div class="">
+        <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js" defer></script>
+        <lottie-player src="https://assets5.lottiefiles.com/packages/lf20_mkcnkz8c.json"  style="width: 100%; height: 300px;" background="transparent"  speed="1" loop autoplay></lottie-player>
+      </div>
+    </div>
+  </section>
 </main>
 {% endblock %}
