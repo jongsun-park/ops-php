@@ -11,6 +11,7 @@ class CMS
     // OPS
     protected $production = null;                        // Stores reference to Production
     protected $option     = null;                        // Stores reference to Option
+    protected $product    = null;                        // Stores reference to Product
 
 
     public function __construct($dsn, $username, $password)
@@ -55,6 +56,13 @@ class CMS
             $this->option = new Option($this->db);       // Create Option object
         }
         return $this->option;                            // Return Option object
+    }
+
+    public function getProduct(){
+        if ($this->product === null) {                    
+            $this->product = new Product($this->db);      
+        }
+        return $this->product;                            
     }
 
 }

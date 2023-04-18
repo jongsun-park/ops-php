@@ -33,3 +33,22 @@ html,
 body {
   scroll-behavior: smooth;
 }
+
+/* Products */
+.product-container {
+  column-count: 3;
+  gap: 2rem;
+
+  @media (max-width: 640px) {
+    column-count: 1;
+  }
+}
+
+.product-container>div {
+  break-inside: avoid-column;
+}
+
+.product-container .select.is-full,
+.product-container select {
+  width: 100%;
+}

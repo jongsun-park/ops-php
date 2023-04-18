@@ -1,0 +1,66 @@
+{% extends 'layout.html' %}
+{% block content %}
+<main class="container grid" id="content">
+  <h1 class="title mb-5">Products</h1>
+
+  <!-- Info message -->
+  {% if info %}
+    <article class="message is-success">
+      <div class="message-body">
+        {{ info }}
+      </div>
+    </article>
+  {% endif %}
+
+
+  <!-- Error message -->
+  {% if errors %}
+    <article class="message is-warning">
+      <div class="message-body">
+        {% for error in errors %}
+          <p>{{ error }}</p>
+        {% endfor %}
+      </div>
+    </article>
+  {% endif %}
+
+  {% for product in products %}
+    <form action="product.php" method="POST" class="box mb-5 product-container">
+      {% for field in fields %}
+        {% if field.key == 'id' %}
+          <input type="hidden" name="id" value="{{ product.id }}">
+        {% else %}
+          <div class="control mb-3">
+            <label for="{{ field.key }}" class="label">{{ field.label | upper }}</label>
+            <input type="text" class="input" name="{{ field.key }}" value="{{ product[field.key] }}">
+          </div>
+        {% endif %}
+      {% endfor %}
+
+      <!-- SELECTS -->
+      {% for select in selects %}
+        <div>
+          <label class="label" for="{{ select.fk }}">{{ select.label }}</label>
+          <div class="select mb-5 is-full">
+            <select name="{{ select.fk }}" id="{{ select.fk }}">
+              <option value="">--Please choose an option--</option>
+              {% for item in select.data %}
+                {% if item['id'] == product[select.fk] %}               
+                  <option value="{{ item['id']|e }}" selected>{{ item["name"]|e }}</option>
+                {% else%}
+                <option value="{{ item['id']|e }}">{{ item["name"]|e }}</option>
+                {% endif %}
+              {% endfor %}
+            </select>
+          </div>
+        </div>
+      {% endfor %}
+
+      <div class="buttons mt-5 is-flex">
+        <input type="submit" value="Save" class="button is-primary is-flex-grow-1">
+        <a href="product.php?t=delete&id={{product[id]|e}}"  class="button is-danger">Delete</a>
+      </div>
+    </form>
+  {% endfor %}
+</main>
+{% endblock %}
