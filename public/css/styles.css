@@ -27,3 +27,9 @@ main.container {
 }
 
 /* Utills */
+
+/* scrolls */
+html,
+body {
+  scroll-behavior: smooth;
+}

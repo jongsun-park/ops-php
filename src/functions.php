@@ -69,13 +69,6 @@ function handle_shutdown()
     }
 }
 
-// VAR_DUMP WITH STYLES
-function logger($var_dump){
-    echo "<pre>";
-    $var_dump;
-    echo "</pre>";
-}
-
 // option_table -> option table
 function getBetterName($name){
     return str_replace('_', ' ', $name);

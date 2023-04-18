@@ -33,32 +33,45 @@
   {% endif %}
 
   <!-- Selected table options -->
-  <h1 class="title">{{ title|capitalize }}</h1>
+  <header class="is-flex is-align-items-center is-justify-content-space-between mb-5">
+    <h1 class="title mb-0">{{ title|capitalize }}</h1>
+    <a class="button is-link" href="#create-new-option">Create New Option</a>
+  </header>
+
   <div class="options">
     {% for option in options %}
-      <div class="option row is-flex mb-3">
+      <div class="box p-5 mb-5">
         <!-- UPDATE OPTION -->
-        <form class="is-flex is-flex-grow-1" action="option.php?q={{ table|e }}" method="POST">
+        <form class="" action="option.php?q={{ table|e }}" method="POST">
           <input type="hidden" name="id" value="{{ option.id|e }}">
           <input type="hidden" name="t" value="update">
-          <input class="input mr-2" type="text" name="name" value="{{ option.name|e }}">
-          <button class="button is-primary mr-2" type="submit">UPDATE</button>
-        </form>
-        <!-- DELETE OPTION -->
-        <form action="option.php?q={{ table|e }}" method="POST">
-          <input type="hidden" name="id" value="{{ option.id|e }}">
-          <input type="hidden" name="t" value="delete">
-          <button class="button is-danger is-light" type="submit">DELETE</button>
+
+          <!-- FIELDS START-->
+          {% for field in fields %}
+            <label class="label" for="{{ field[0] }}">{{ field[1]|capitalize }}</label>
+            <input class="input mr-2 mb-3" type="text" name="{{ field[0] }}" value="{{ option[field[0]]|e }}">
+          {% endfor %}
+          <!-- FIELDS END -->
+        
+          <div class="buttons">
+            <button class="button is-primary mr-2" type="submit">UPDATE</button>
+            <a class="button is-danger is-light" href="option.php?q={{ table|e }}&t=delete&id={{option.id|e}}">DELETE</a>
+          </div>
         </form>
       </div>
     {% endfor %}
     {% if table %}
-      <div class="mt-5">
-        <h2 class="subtitle has-text-weight-bold">Create New Option</h2>
+      <div class="box p-5 mb-5">
         <!-- CREATE NEW OPTION -->
-        <form class="is-flex" action="option.php?q={{ table|e }}" method="POST">
-          <input class="input mr-2" type="text" name="name" required>
+        <h2 class="subtitle has-text-weight-bold">Create New Option</h2>
+        <form class="" action="option.php?q={{ table|e }}" method="POST" id="create-new-option">
           <input type="hidden" name="t" value="create">
+          <!-- FIELDS START-->
+          {% for field in fields %}
+            <label class="label" for="{{ field[0] }}">{{ field[1]|capitalize }}</label>
+            <input class="input mr-2 mb-3" type="text" name="{{ field[0] }}">
+          {% endfor %}
+          <!-- FIELDS END -->
           <button class="button is-primary" type="submit">ADD</button>
         </form>
       </div>

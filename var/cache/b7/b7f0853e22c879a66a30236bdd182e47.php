@@ -12,8 +12,8 @@ use Twig\Sandbox\SecurityNotAllowedFunctionError;
 use Twig\Source;
 use Twig\Template;
 
-/* option.html */
-class __TwigTemplate_ba0438763947921d13aa89b9cf23c670 extends Template
+/* wash_option.html */
+class __TwigTemplate_222c7b4536bc01d999f21eabce033029 extends Template
 {
     private $source;
     private $macros = [];
@@ -38,7 +38,7 @@ class __TwigTemplate_ba0438763947921d13aa89b9cf23c670 extends Template
     protected function doDisplay(array $context, array $blocks = [])
     {
         $macros = $this->macros;
-        $this->parent = $this->loadTemplate("layout.html", "option.html", 1);
+        $this->parent = $this->loadTemplate("layout.html", "wash_option.html", 1);
         $this->parent->display($context, array_merge($this->blocks, $blocks));
     }
 
@@ -129,45 +129,68 @@ class __TwigTemplate_ba0438763947921d13aa89b9cf23c670 extends Template
         // line 34
         echo "
   <!-- Selected table options -->
-  <h1 class=\"title\">";
-        // line 36
+  <header class=\"is-flex is-align-items-center is-justify-content-space-between mb-5\">
+    <h1 class=\"title mb-0\">";
+        // line 37
         echo twig_escape_filter($this->env, twig_capitalize_string_filter($this->env, ($context["title"] ?? null)), "html", null, true);
         echo "</h1>
+    <a class=\"button is-link\" href=\"#create-new-option\">Create New Option</a>
+  </header>
+
   <div class=\"options\">
     ";
-        // line 38
+        // line 42
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["options"] ?? null));
         foreach ($context['_seq'] as $context["_key"] => $context["option"]) {
-            // line 39
-            echo "      <div class=\"option row is-flex mb-3\">
+            // line 43
+            echo "      <div class=\"box p-5 mb-5\">
         <!-- UPDATE OPTION -->
-        <form class=\"is-flex is-flex-grow-1\" action=\"option.php?q=";
-            // line 41
+        <form class=\"\" action=\"option.php?q=";
+            // line 45
             echo twig_escape_filter($this->env, ($context["table"] ?? null));
             echo "\" method=\"POST\">
           <input type=\"hidden\" name=\"id\" value=\"";
-            // line 42
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["option"], "id", [], "any", false, false, false, 42));
+            // line 46
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["option"], "id", [], "any", false, false, false, 46));
             echo "\">
           <input type=\"hidden\" name=\"t\" value=\"update\">
-          <input class=\"input mr-2\" type=\"text\" name=\"name\" value=\"";
-            // line 44
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["option"], "name", [], "any", false, false, false, 44));
-            echo "\">
-          <button class=\"button is-primary mr-2\" type=\"submit\">UPDATE</button>
-        </form>
-        <!-- DELETE OPTION -->
-        <form action=\"option.php?q=";
-            // line 48
+
+          <!-- FIELDS START-->
+          ";
+            // line 50
+            $context['_parent'] = $context;
+            $context['_seq'] = twig_ensure_traversable(($context["fields"] ?? null));
+            foreach ($context['_seq'] as $context["_key"] => $context["field"]) {
+                // line 51
+                echo "            <label class=\"label\" for=\"";
+                echo twig_escape_filter($this->env, (($__internal_compile_5 = $context["field"]) && is_array($__internal_compile_5) || $__internal_compile_5 instanceof ArrayAccess ? ($__internal_compile_5[0] ?? null) : null), "html", null, true);
+                echo "\">";
+                echo twig_escape_filter($this->env, twig_capitalize_string_filter($this->env, (($__internal_compile_6 = $context["field"]) && is_array($__internal_compile_6) || $__internal_compile_6 instanceof ArrayAccess ? ($__internal_compile_6[1] ?? null) : null)), "html", null, true);
+                echo "</label>
+            <input class=\"input mr-2 mb-3\" type=\"text\" name=\"";
+                // line 52
+                echo twig_escape_filter($this->env, (($__internal_compile_7 = $context["field"]) && is_array($__internal_compile_7) || $__internal_compile_7 instanceof ArrayAccess ? ($__internal_compile_7[0] ?? null) : null), "html", null, true);
+                echo "\" value=\"";
+                echo twig_escape_filter($this->env, (($__internal_compile_8 = $context["option"]) && is_array($__internal_compile_8) || $__internal_compile_8 instanceof ArrayAccess ? ($__internal_compile_8[(($__internal_compile_9 = $context["field"]) && is_array($__internal_compile_9) || $__internal_compile_9 instanceof ArrayAccess ? ($__internal_compile_9[0] ?? null) : null)] ?? null) : null));
+                echo "\">
+          ";
+            }
+            $_parent = $context['_parent'];
+            unset($context['_seq'], $context['_iterated'], $context['_key'], $context['field'], $context['_parent'], $context['loop']);
+            $context = array_intersect_key($context, $_parent) + $_parent;
+            // line 54
+            echo "          <!-- FIELDS END -->
+        
+          <div class=\"buttons\">
+            <button class=\"button is-primary mr-2\" type=\"submit\">UPDATE</button>
+            <a class=\"button is-danger is-light\" href=\"option.php?q=";
+            // line 58
             echo twig_escape_filter($this->env, ($context["table"] ?? null));
-            echo "\" method=\"POST\">
-          <input type=\"hidden\" name=\"id\" value=\"";
-            // line 49
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["option"], "id", [], "any", false, false, false, 49));
-            echo "\">
-          <input type=\"hidden\" name=\"t\" value=\"delete\">
-          <button class=\"button is-danger is-light\" type=\"submit\">DELETE</button>
+            echo "&t=delete&id=";
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["option"], "id", [], "any", false, false, false, 58));
+            echo "\">DELETE</a>
+          </div>
         </form>
       </div>
     ";
@@ -175,25 +198,47 @@ class __TwigTemplate_ba0438763947921d13aa89b9cf23c670 extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['option'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 55
+        // line 63
         echo "    ";
         if (($context["table"] ?? null)) {
-            // line 56
-            echo "      <div class=\"mt-5\">
-        <h2 class=\"subtitle has-text-weight-bold\">Create New Option</h2>
+            // line 64
+            echo "      <div class=\"box p-5 mb-5\">
         <!-- CREATE NEW OPTION -->
-        <form class=\"is-flex\" action=\"option.php?q=";
-            // line 59
+        <h2 class=\"subtitle has-text-weight-bold\">Create New Option</h2>
+        <form class=\"\" action=\"option.php?q=";
+            // line 67
             echo twig_escape_filter($this->env, ($context["table"] ?? null));
-            echo "\" method=\"POST\">
-          <input class=\"input mr-2\" type=\"text\" name=\"name\" required>
+            echo "\" method=\"POST\" id=\"create-new-option\">
           <input type=\"hidden\" name=\"t\" value=\"create\">
+          <!-- FIELDS START-->
+          ";
+            // line 70
+            $context['_parent'] = $context;
+            $context['_seq'] = twig_ensure_traversable(($context["fields"] ?? null));
+            foreach ($context['_seq'] as $context["_key"] => $context["field"]) {
+                // line 71
+                echo "            <label class=\"label\" for=\"";
+                echo twig_escape_filter($this->env, (($__internal_compile_10 = $context["field"]) && is_array($__internal_compile_10) || $__internal_compile_10 instanceof ArrayAccess ? ($__internal_compile_10[0] ?? null) : null), "html", null, true);
+                echo "\">";
+                echo twig_escape_filter($this->env, twig_capitalize_string_filter($this->env, (($__internal_compile_11 = $context["field"]) && is_array($__internal_compile_11) || $__internal_compile_11 instanceof ArrayAccess ? ($__internal_compile_11[1] ?? null) : null)), "html", null, true);
+                echo "</label>
+            <input class=\"input mr-2 mb-3\" type=\"text\" name=\"";
+                // line 72
+                echo twig_escape_filter($this->env, (($__internal_compile_12 = $context["field"]) && is_array($__internal_compile_12) || $__internal_compile_12 instanceof ArrayAccess ? ($__internal_compile_12[0] ?? null) : null), "html", null, true);
+                echo "\">
+          ";
+            }
+            $_parent = $context['_parent'];
+            unset($context['_seq'], $context['_iterated'], $context['_key'], $context['field'], $context['_parent'], $context['loop']);
+            $context = array_intersect_key($context, $_parent) + $_parent;
+            // line 74
+            echo "          <!-- FIELDS END -->
           <button class=\"button is-primary\" type=\"submit\">ADD</button>
         </form>
       </div>
     ";
         }
-        // line 66
+        // line 79
         echo "  </div>
 </main>
 ";
@@ -201,7 +246,7 @@ class __TwigTemplate_ba0438763947921d13aa89b9cf23c670 extends Template
 
     public function getTemplateName()
     {
-        return "option.html";
+        return "wash_option.html";
     }
 
     public function isTraitable()
@@ -211,7 +256,7 @@ class __TwigTemplate_ba0438763947921d13aa89b9cf23c670 extends Template
 
     public function getDebugInfo()
     {
-        return array (  197 => 66,  187 => 59,  182 => 56,  179 => 55,  167 => 49,  163 => 48,  156 => 44,  151 => 42,  147 => 41,  143 => 39,  139 => 38,  134 => 36,  130 => 34,  125 => 31,  116 => 29,  112 => 28,  108 => 26,  106 => 25,  102 => 23,  95 => 19,  91 => 17,  89 => 16,  84 => 13,  78 => 12,  70 => 10,  62 => 8,  59 => 7,  55 => 6,  50 => 3,  46 => 2,  35 => 1,);
+        return array (  242 => 79,  235 => 74,  227 => 72,  220 => 71,  216 => 70,  210 => 67,  205 => 64,  202 => 63,  189 => 58,  183 => 54,  173 => 52,  166 => 51,  162 => 50,  155 => 46,  151 => 45,  147 => 43,  143 => 42,  135 => 37,  130 => 34,  125 => 31,  116 => 29,  112 => 28,  108 => 26,  106 => 25,  102 => 23,  95 => 19,  91 => 17,  89 => 16,  84 => 13,  78 => 12,  70 => 10,  62 => 8,  59 => 7,  55 => 6,  50 => 3,  46 => 2,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -251,38 +296,51 @@ class __TwigTemplate_ba0438763947921d13aa89b9cf23c670 extends Template
   {% endif %}
 
   <!-- Selected table options -->
-  <h1 class=\"title\">{{ title|capitalize }}</h1>
+  <header class=\"is-flex is-align-items-center is-justify-content-space-between mb-5\">
+    <h1 class=\"title mb-0\">{{ title|capitalize }}</h1>
+    <a class=\"button is-link\" href=\"#create-new-option\">Create New Option</a>
+  </header>
+
   <div class=\"options\">
     {% for option in options %}
-      <div class=\"option row is-flex mb-3\">
+      <div class=\"box p-5 mb-5\">
         <!-- UPDATE OPTION -->
-        <form class=\"is-flex is-flex-grow-1\" action=\"option.php?q={{ table|e }}\" method=\"POST\">
+        <form class=\"\" action=\"option.php?q={{ table|e }}\" method=\"POST\">
           <input type=\"hidden\" name=\"id\" value=\"{{ option.id|e }}\">
           <input type=\"hidden\" name=\"t\" value=\"update\">
-          <input class=\"input mr-2\" type=\"text\" name=\"name\" value=\"{{ option.name|e }}\">
-          <button class=\"button is-primary mr-2\" type=\"submit\">UPDATE</button>
-        </form>
-        <!-- DELETE OPTION -->
-        <form action=\"option.php?q={{ table|e }}\" method=\"POST\">
-          <input type=\"hidden\" name=\"id\" value=\"{{ option.id|e }}\">
-          <input type=\"hidden\" name=\"t\" value=\"delete\">
-          <button class=\"button is-danger is-light\" type=\"submit\">DELETE</button>
+
+          <!-- FIELDS START-->
+          {% for field in fields %}
+            <label class=\"label\" for=\"{{ field[0] }}\">{{ field[1]|capitalize }}</label>
+            <input class=\"input mr-2 mb-3\" type=\"text\" name=\"{{ field[0] }}\" value=\"{{ option[field[0]]|e }}\">
+          {% endfor %}
+          <!-- FIELDS END -->
+        
+          <div class=\"buttons\">
+            <button class=\"button is-primary mr-2\" type=\"submit\">UPDATE</button>
+            <a class=\"button is-danger is-light\" href=\"option.php?q={{ table|e }}&t=delete&id={{option.id|e}}\">DELETE</a>
+          </div>
         </form>
       </div>
     {% endfor %}
     {% if table %}
-      <div class=\"mt-5\">
-        <h2 class=\"subtitle has-text-weight-bold\">Create New Option</h2>
+      <div class=\"box p-5 mb-5\">
         <!-- CREATE NEW OPTION -->
-        <form class=\"is-flex\" action=\"option.php?q={{ table|e }}\" method=\"POST\">
-          <input class=\"input mr-2\" type=\"text\" name=\"name\" required>
+        <h2 class=\"subtitle has-text-weight-bold\">Create New Option</h2>
+        <form class=\"\" action=\"option.php?q={{ table|e }}\" method=\"POST\" id=\"create-new-option\">
           <input type=\"hidden\" name=\"t\" value=\"create\">
+          <!-- FIELDS START-->
+          {% for field in fields %}
+            <label class=\"label\" for=\"{{ field[0] }}\">{{ field[1]|capitalize }}</label>
+            <input class=\"input mr-2 mb-3\" type=\"text\" name=\"{{ field[0] }}\">
+          {% endfor %}
+          <!-- FIELDS END -->
           <button class=\"button is-primary\" type=\"submit\">ADD</button>
         </form>
       </div>
     {% endif %}
   </div>
 </main>
-{% endblock %}", "option.html", "C:\\Users\\jongs\\Desktop\\operations\\templates\\option.html");
+{% endblock %}", "wash_option.html", "C:\\Users\\jongs\\Desktop\\operations\\templates\\wash_option.html");
     }
 }

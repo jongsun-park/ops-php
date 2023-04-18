@@ -18,7 +18,7 @@ class Option
 
     public function getAll($table): array
     {
-      $sql = "SELECT id, name FROM $table;";
+      $sql = "SELECT * FROM $table;";
       return $this->db->runSQL($sql)->fetchAll();
     }
 
@@ -32,12 +32,31 @@ class Option
       }
     }
 
-    public function create($table, $name): bool
+    public function create($table, $arguments = []): bool
     {      
+      $name = $arguments['name'] ?? '';
       try {                                                        // Try to add member 
         if($this->getByName($table, $name)) return false;          // If there has same name        
-        $sql = "INSERT INTO $table (name) VALUES (:name);";        // SQL to add option         
-        $this->db->runSQL($sql, [$name]);                          // Run SQL
+
+        $sql = 'INSERT INTO `' . $table . '` (';
+
+        foreach ($arguments as $key => $value) {
+          $sql .= '`' . $key . '`,';
+        }
+        
+        $sql = rtrim($sql, ',');
+        $sql .= ') VALUES (';
+        
+        foreach ($arguments as $key => $value) {
+          $sql .= ':' . $key . ',';
+        }
+        
+        $sql = rtrim($sql, ',');
+        $sql .= ')';
+
+        // var_dump($sql);
+
+        $this->db->runSQL($sql, $arguments);                     // Run SQL
         return true;                                               // Return true
       } catch (\PDOException $e) {                                 // If PDOException thrown
           if ($e->errorInfo[1] === 1062) {                         // If error indicates duplicate entry
