@@ -42,4 +42,49 @@ class Product
 
     }
 
+    public function create($arguments = []): bool
+    {      
+      if(isset($arguments['t'])) unset($arguments['t']);
+
+      try {                                                        
+        $sql = 'INSERT INTO `' . 'product' . '` (';
+
+        foreach ($arguments as $key => $value) {
+          $sql .= '`' . $key . '`,';
+        }
+        
+        $sql = rtrim($sql, ',');
+        $sql .= ') VALUES (';
+        
+        foreach ($arguments as $key => $value) {
+          $sql .= ':' . $key . ',';
+        }
+        
+        $sql = rtrim($sql, ',');
+        $sql .= ')';
+
+        // var_dump($sql);
+
+        $this->db->runSQL($sql, $arguments);                     
+        return true;                                               
+      } catch (\PDOException $e) {                                 
+        if ($e->errorInfo[1] === 1062) {                         
+            return false;                                        
+        }                                                        
+        throw $e;                                                
+      }
+    }
+
+    public function delete($id): bool{
+      try {                                                        
+        $sql = "DELETE FROM `product` WHERE id = :id;";                    
+        // var_dump($sql);
+
+        $this->db->runSQL($sql, [$id]);                            
+        return true;                                               
+      } catch (\PDOException $e) {                                                    
+        throw $e;                                              
+      }    
+    }
+
 }

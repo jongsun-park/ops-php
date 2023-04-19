@@ -18,8 +18,26 @@ if(isset($_POST['id'])){
 }
 
 // DELETE PRODUCT
+if(isset($_GET['t']) && $_GET['t'] == "delete" && isset($_GET['id'])){
+  // echo "delete";
+  // var_dump($_POST);
+  $id = $_GET['id'] ?? '';
+  $result = $cms->getProduct()->delete($id);
+  if(!$result) $errors[] = "Sorry, failed to delete product, please try again";
+  header('Location: product.php');
+
+}
 
 // CREATE PRODUCT
+if(isset($_POST['t']) && $_POST['t'] == "create"){
+  $arguments = $_POST;
+  $result = $cms->getProduct()->create($arguments);
+  if($result){
+    $info = "Product created";
+  }else{
+    $errors[] = "Fail to create product, please try it again later";
+  } 
+}
 
 // FETCH PRODUCTS
 $products = $cms->getProduct()->getAll() ?? [];
@@ -50,15 +68,15 @@ $fields = [
   ],
   [
     'key' => 'tf_num',
-    'label' => 'TF NUM'
+    'label' => 'TF Number'
   ],
   [
     'key' => 'description',
-    'label' => 'DESCRIPTION'
+    'label' => 'Description'
   ],
   [
     'key' => 'divs',
-    'label' => 'DIVS'
+    'label' => 'Dividers'
   ],
   [
     'key' => 'ppcm',
@@ -66,23 +84,23 @@ $fields = [
   ],
   [
     'key' => 'pprepeat',
-    'label' => 'PPREPEAT'
+    'label' => 'PPRepeat'
   ],
   [
     'key' => 'cut_w',
-    'label' => 'CUT W'
+    'label' => 'Cut Width'
   ],
   [
     'key' => 'cut_l',
-    'label' => 'CUT L'
+    'label' => 'Cut Length'
   ],
   [
     'key' => 'finish_w',
-    'label' => 'FINISH W'
+    'label' => 'Finish Width'
   ],
   [
     'key' => 'finish_l',
-    'label' => 'FINISH L'
+    'label' => 'Finish Length'
   ],
 ];
 
@@ -122,6 +140,7 @@ $selects = [
 
 
 // SENDING TABLE FOR TEMPLATE
+$data["title"] = "Products";
 $data["products"] = $products;
 $data['fields'] = $fields;
 $data['units'] = $units;

@@ -1,7 +1,6 @@
 {% extends 'layout.html' %}
 {% block content %}
 <main class="container grid" id="content">
-  <h1 class="title mb-5">Products</h1>
 
   <!-- Info message -->
   {% if info %}
@@ -24,6 +23,11 @@
     </article>
   {% endif %}
 
+  <header class="is-flex is-align-items-center is-justify-content-space-between mb-5">
+    <h1 class="title mb-0">{{ title|capitalize }}</h1>
+    <a class="button is-link" href="#create-new-option">Create New Option</a>
+  </header>
+
   {% for product in products %}
     <form action="product.php" method="POST" class="box mb-5 product-container">
       {% for field in fields %}
@@ -42,7 +46,7 @@
         <div>
           <label class="label" for="{{ select.fk }}">{{ select.label }}</label>
           <div class="select mb-5 is-full">
-            <select name="{{ select.fk }}" id="{{ select.fk }}">
+            <select name="{{ select.fk }}" id="{{ select.fk }}" required>
               <option value="">--Please choose an option--</option>
               {% for item in select.data %}
                 {% if item['id'] == product[select.fk] %}               
@@ -58,9 +62,46 @@
 
       <div class="buttons mt-5 is-flex">
         <input type="submit" value="Save" class="button is-primary is-flex-grow-1">
-        <a href="product.php?t=delete&id={{product[id]|e}}"  class="button is-danger">Delete</a>
+        <a href="product.php?t=delete&id={{ product.id }}"  class="button is-danger">Delete</a>
       </div>
     </form>
   {% endfor %}
+
+  <div class="box p-5 mb-5">
+    <!-- CREATE NEW OPTION -->
+    <h2 class="subtitle has-text-weight-bold">Create New Product</h2>
+    <form class="product-container my-5" action="product.php" method="POST" id="create-new-option">
+      <input type="hidden" name="t" value="create">
+      <!-- FIELDS START-->
+      {% for field in fields %}
+        {% if field.key == 'id' %}
+        {% else %}
+          <div class="control mb-3">
+            <label for="{{ field.key }}" class="label">{{ field.label | e }}</label>
+            <input type="text" class="input" name="{{ field.key }}" value="">
+          </div>
+        {% endif %}
+      {% endfor %}
+      <!-- FIELDS END -->
+      
+      <!-- SELECTS START -->
+      {% for select in selects %}
+      <div>
+        <label class="label" for="{{ select.fk }}">{{ select.label }}</label>
+        <div class="select mb-5 is-full">
+          <select name="{{ select.fk }}" id="{{ select.fk }}" required>
+            <option value="">--Please choose an option--</option>
+            {% for item in select.data %}
+              <option value="{{ item['id']|e }}">{{ item["name"]|e }}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+      {% endfor %}
+      <!-- SELECTS END -->
+      
+      <button class="button is-primary is-fullwidth" type="submit">ADD</button>
+    </form>
+  </div>
 </main>
 {% endblock %}
